@@ -29,7 +29,7 @@ public class PriceFetcher {
 			br.close();
 			return read.toString();
 		} else {
-			System.out.println("GET request not worked");
+			System.out.println("GET request failed");
 		}
 		return null;
 		
@@ -41,9 +41,9 @@ public class PriceFetcher {
 		JSONObject json = (JSONObject) parser.parse(input);
 		JSONObject data = (JSONObject) json.get("data");
 		JSONObject rates = (JSONObject) data.get("rates");
-		String found = (String) rates.get(curr);
+		String price = (String) rates.get(curr);
 		
-		return found;
+		return price;
 		
 	}
 }

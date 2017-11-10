@@ -12,6 +12,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class SpringController {
+
+	@RequestMapping(value = "/settings", method = RequestMethod.GET)
+	public String getSettings(Model model) {
+		model.addAttribute("settingsForm", new SettingsForm());
+		return "settingsForm";
+	}
+	
+	@RequestMapping(value = "/settings", method = RequestMethod.POST)
+	public String settingsResult(
+			@ModelAttribute("setForm") SettingsForm setForm, 
+			BindingResult result, Model settingsForm) throws IOException, ParseException {
+		if (result.hasErrors()) {
+            return "settingsForm";
+        }
+		String currency = setForm.getCurrency();
+		String preferredCrypto = setForm.getPreferredCrypto();
+		String priceMargin = setForm.getPriceMargin();
+		String recurringPeriod = setForm.getRecurringPeriod();
+		
+		settingsForm.addAttribute("currency", currency);
+		settingsForm.addAttribute("preferredCrypto", preferredCrypto);
+		settingsForm.addAttribute("priceMargin", priceMargin);
+		settingsForm.addAttribute("recurringPeriod", recurringPeriod);
+		
+		return "settingsConfirmed";
+	}
 	
 	@RequestMapping(value = "/submit", method = RequestMethod.GET)
     public String cryptoForm(Model model) {
@@ -31,15 +57,10 @@ public class SpringController {
         String crypto = subForm.getCrypto();
         String price = PriceFetcher.processJSON(crypto,currency);
         
-        System.out.println(currency);
-        System.out.println(crypto);
-        System.out.println(price);
-        
         submissionForm.addAttribute("crypto", crypto);
         submissionForm.addAttribute("currency", currency);
         submissionForm.addAttribute("price", price);
-        
-        System.out.println(submissionForm);
+
         return "Result";
     }
 

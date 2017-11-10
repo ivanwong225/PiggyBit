@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Settings Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Settings</h1>
+    <form action="#" th:action="@{/settings}" th:object="${settingsForm}" method="post">
+    	<p>Currency: <input type="text" th:field="*{currency}" /></p>
+        <p>Preferred Crypto: <input type="text" th:field="*{preferredCrypto}" /></p>
+        <p>Price Margin: <input type="text" th:field="*{priceMargin}" /></p>
+        <p>Recurring Period: <input type="text" th:field="*{recurringPeriod}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

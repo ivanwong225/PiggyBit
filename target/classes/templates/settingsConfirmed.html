@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Settings Confirmed</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Settings Confirmed</h1>
+    <p th:text="'Currency requested: ' + ${currency != null ? currency : 'NOT FOUND'} "/>
+    <p th:text="'Crypto currency requested: ' + ${preferredCrypto != null ? preferredCrypto : 'NOT FOUND'} "/>
+    <p th:text="'Price margin: ' + ${priceMargin != null ? priceMargin : 'NOT FOUND'} "/>
+    <p th:text="'Recurring period: ' + ${recurringPeriod != null ? recurringPeriod : 'NOT FOUND'} "/>
+    <a href="/settings">Change your settings</a>
+</body>
+</html>

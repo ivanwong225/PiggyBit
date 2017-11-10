@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class mainClass {
-	public static String crypto = "ETH";
-	public static String currency = "USD";
 
     public static void main(String[] args) {
         SpringApplication.run(mainClass.class, args);
